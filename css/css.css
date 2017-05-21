@@ -1,0 +1,81 @@
+*{ margin: 0; padding:0; list-style: none; font-family:sans-serif; font-size: .98em;}
+body,html{ max-width: 740px; margin: 0 auto;}
+.hide{ display: none;}
+img{ display: block; vertical-align: bottom;}
+
+
+.p6Box{ background: url("../imgs/p6Bg2.png") 0 0 repeat-y; background-size: 100% 100%; display: block; min-height: 470px;}
+.p6Box dl{}
+.p6Box dt,.p6Box dd{ clear: both; overflow: hidden; padding: 8px 0;}
+.p6Box dt label,.p6Box dd label{ display: inline-block; width: 26%; text-align: left; padding-left: 8%; color: #955a36;
+vertical-align: top; line-height: 32px;}
+.p6Box dt input,.p6Box dt textarea{ width: 50%; display: inline-block; border: 1px solid #955a36; background: none; padding: 6px; 
+line-height: 18px; color: #5c3c29;}
+.p6Box dt img{ display: inline-block; width: 4.9%; vertical-align: top; margin: 7px 0 0 4px;}
+.p6Box dd{ padding-top: 12px;}
+.p6Box dd a{ width: 50%; display: inline-block; border: none; background: #f47e00; padding: 10px 6px; 
+line-height: 20px; color: #fff; font-size: 1.2rem; border-radius: 14px; text-align: center;}
+.p6Box dd label{ font-size: 1.1rem; font-weight: bold; line-height: 38px;}
+.p6Box dd span{ padding-right: 4px;}
+.p6Box dd em{ font-style: normal;}
+
+.msg{ text-align: center; position: fixed; left: 0; top: 40%; z-index: 100; width: 100%; display: none;}
+.msg span{ display: inline-block; padding: 6px 12px; background: rgba(0,0,0,.6); color: #fff; margin: 0 auto;
+ border-radius: 6px;}
+
+#reduce{ display: none;}
+.tip{  clear: both; padding:20px 0; color: #c7a78f; font-size: .9rem; text-align: center;}
+.tip span{ font-size: 1.2rem;}
+
+/*分享页*/
+.p5{ background: url("../imgs/p5_0.png") 0 0 repeat-y; background-size: 100% auto;}
+.p5 .rt{ display: block; float: left; width: 100%; position: relative;}
+.p5 img{ width: 100%; border: none; float: left; margin: 0;}
+.p5 input{ position: absolute; width: 29%; left: 41%; height: 35px; background: none; text-align: center; line-height: 35px;
+ color: #4d8468; font-size: 1.2em; border:none; margin-top: 4px;} 
+.p5 .btn{ clear: both; position: relative;}
+.p5 .btn .bb{ position: absolute; left: 28%; top: 1.5vh; width: 44%;}
+
+ /*第一页*/
+.p1{ background: url("../imgs/p1_0.png") 0 0; position: relative; background-size:100% 100%;}
+.p1 .p1Bg{ position: absolute; left: 0; top: 0; z-index: 1;}
+.p1 .p1Text{ position: absolute; z-index: 10; left: 5%; top:40px;}
+.p1 .circle{ position: absolute; z-index: 10; right: 24%; bottom:100px; width: 18%;}
+.p1 .hand{ position: absolute; z-index: 10; right: 21%; bottom:40px; width: 20%;}
+
+ /*第二页*/
+.p2,.p2_1{ background: url("../imgs/p2_0.png") 0 0; background-size:100% 100%;}
+.p2 .banner,.p2_1 .banner{ width: 90%; margin: 0 auto; padding-top: 20px; position: relative;}
+.p2 .banner img,.p2_1 .banner img{ width: 100%;}
+.p2 .banner img.circle{ position: absolute; z-index: 10; right: 8%; bottom:48px; width: 14%;}
+.p2 .banner img.hand{ position: absolute; z-index: 10; right: 0; bottom:-26px; width: 24%;}
+.p2 .text1,.p2 .text2,.p2 .text3{ width:75%; padding:6px 0 0 13%;}
+.p2 .text1{ padding-top: 20px;}
+.p2 .text1 img{ width: 90%;}
+.p2 .text2 img{ width: 70%;}
+.p2 .text3 img{ width: 100%;}
+
+/*第二页反面*/
+.p2_1 .btn{ width: 60%; margin: 60px 20% 0; text-align: center;}
+.p2_1 .btn img{ width: 100%;}
+
+ /*第三页*/
+.p3{ background: url("../imgs/p3_1.png") 0 0; background-size:100% 100%;}
+.p4{ background: url("../imgs/p4_1.png") 0 0; background-size:100% 100%;}
+
+.showResult{ position: fixed; z-index: 100; background: rgba(0,0,0,.5); width: 80%; left: 0; bottom: 0; top: 0; padding: 24% 10% 0;
+display: none;}
+.showResult .percent{position: absolute; z-index: 101; top: 51.5vh; right: 32vw; font-size: 1.8rem; color: #326b4e; width: 46px; 
+text-align: center; letter-spacing: -2px;  font-family: Arial;}
+.showResult .bb{ position: absolute; left: 26%; width: 48%; bottom: 22vh;}
+.showResult .bb #shareBtn{ display: block; margin: 10px 0;}
+
+.shareMark{ background: rgba(0,0,0,.5); position: fixed; left: 0; top: 0; width: 100%; bottom:0; z-index: 101; display: none;}
+.p5 .shareMark img{ width: 60%; float: right; margin-right: 10px;}
+
+/*分享后打开的页面*/
+.shareDetail{ background: url("../imgs/p1_0.png") 0 0; background-size:100% 100%; height: 100%; width: 100%; position: relative;}
+.shareDetail .bb{ position: absolute; left: 26%; width: 48%; bottom: 25vh;}
+.shareDetail .percent{position: absolute; z-index: 101; top: 54vh; right: 32vw; font-size: 1.8rem; color: #326b4e; width: 46px; 
+text-align: center; letter-spacing: -2px;  font-family: Arial;}
+.shareDetail a{ display: block;}
