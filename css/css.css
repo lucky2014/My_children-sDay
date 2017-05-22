@@ -39,52 +39,73 @@ line-height: 20px; color: #fff; font-size: 1.2rem; border-radius: 14px; text-ali
  /*第一页*/
 .p1{ background: url("../imgs/p1_0.png") 0 0; position: relative; background-size:100% 100%;}
 .p1 .p1Bg{ position: absolute; left: 0; top: 0; z-index: 1;}
-.p1 .p1Text{ position: absolute; z-index: 10; left: 5%; top:40px;}
-.p1 .circle1{ right: 31%; bottom:133px;}
-.p1 .circle1,.p1 .circle2,.p1 .circle3{ position: absolute; z-index: 10; width: 20px; height: 20px; border-radius: 100%; 
-	background: rgba(100, 100, 100, 0.4);
-	animation-iteration-count:infinite;
+.p1 .p1Text{ position: absolute; z-index: 10; left: 5%; top:40px;
+	animation: myZoomIn1 .6s 1;
+    -webkit-animation: myZoomIn1 .6s 1;
 }
-.circle1 {
-  animation: sploosh 1s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-.circle2 {
-  animation: sploosh2 1s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-.circle3 {
-  animation: sploosh3 1s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-@keyframes sploosh {
+@-webkit-keyframes myZoomIn1 {
   0% {
-    box-shadow: 0 0 0 0px rgba(100, 100, 100, 0.4);
-    background: rgba(100, 100, 100, 0.4);
+    opacity: 0.4;
+    -webkit-transform: scale3d(.4, .4, .4) translate3d(0, 30%, 0);
+    transform: scale3d(.4, .4, .4) translate3d(0, 30%, 0);
   }
   100% {
-    box-shadow: 0 0 0 40px rgba(2100, 100, 100, 0);
-    background: rgba(100, 100, 100, 0);
+    opacity: 1;
   }
 }
-@keyframes sploosh2 {
+
+@keyframes myZoomIn1 {
   0% {
-    box-shadow: 0 0 0 0px rgba(100, 100, 100, 0.6);
-    background: rgba(100, 100, 100, 0.5);
+    opacity: 0.4;
+    -webkit-transform: scale3d(.4, .4, .4) translate3d(0, 30%, 0);
+    transform: scale3d(.4, .4, .4) translate3d(0, 30%, 0);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.myZoomIn1 {
+  -webkit-animation-name: myZoomIn1;
+  animation-name: myZoomIn1;
+}
+.p1 .circle{ position: absolute; z-index: 10; right: 10%; bottom:91px; width: 18%;
+	animation: circleAnimation 2.8s linear infinite;
+    -webkit-animation: circleAnimation 2.8s linear infinite;
+}
+.p1 .hand{ position: absolute; z-index: 10; right: 7%; bottom:40px; width: 20%;
+	animation: handAnimation 2.8s linear infinite;
+    -webkit-animation: handAnimation 2.8s linear infinite;
+}
+@keyframes handAnimation {
+  0% {
+    right: 7%;
+  }
+  25% {
+    right: 15%;
+  }
+  50% {
+    right: 32%;
   }
   100% {
-    box-shadow: 0 0 0 30px rgba(100, 100, 100, 0);
-    background: rgba(100, 100, 100, 0.3);
+    right: 32%;
   }
 }
-@keyframes sploosh3 {
+@keyframes circleAnimation {
   0% {
-    box-shadow: 0 0 0 0px rgba(100, 100, 100, 0.8);
-    background: rgba(100, 100, 100, 0.7);
+    right: 10%;
+  }
+  25% {
+    right: 18%;
+  }
+  50% {
+    right: 35%;
   }
   100% {
-    box-shadow: 0 0 0 20px rgba(100, 100, 100, 0);
-    background: rgba(100, 100, 100, 0);
+    right: 35%;
   }
 }
-.p1 .hand{ position: absolute; z-index: 10; right: 21%; bottom:40px; width: 20%;}
 
  /*第二页*/
 .p2,.p2_1{ background: url("../imgs/p2_0.png") 0 0; background-size:100% 100%;}
@@ -92,11 +113,28 @@ line-height: 20px; color: #fff; font-size: 1.2rem; border-radius: 14px; text-ali
 .p2 .banner img,.p2_1 .banner img{ width: 100%;}
 .p2 .banner img.circle{ position: absolute; z-index: 10; right: 8%; bottom:48px; width: 14%;}
 .p2 .banner img.hand{ position: absolute; z-index: 10; right: 0; bottom:-26px; width: 24%;}
-.p2 .text1,.p2 .text2,.p2 .text3{ width:75%; padding:6px 0 0 13%;}
+.p2 .textBox{ padding:6px 0 0 0; position: absolute; bottom: 60px;
+	animation: myrotateIn .6s 1;
+    -webkit-animation: myrotateIn .6s 1;
+}
+@-webkit-keyframes myrotateIn{
+	0%{-webkit-transform-origin:center;transform-origin:center;-webkit-transform:rotate3d(0,0,1,-250deg) scale3d(.3,.3,.3);transform:rotate3d(0,0,1,-250deg) scale3d(.3,.3,.3);opacity:0;}
+	100%{-webkit-transform-origin:center;transform-origin:center;-webkit-transform:none;transform:none;opacity:1;}}
+	@keyframes myrotateIn{
+	0%{-webkit-transform-origin:center;-ms-transform-origin:center;transform-origin:center;-webkit-transform:rotate3d(0,0,1,-250deg) scale3d(.3,.3,.3);-ms-transform:rotate3d(0,0,1,-250deg) scale3d(.3,.3,.3);transform:rotate3d(0,0,1,-250deg) scale3d(.3,.3,.3);opacity:0;}
+	100%{-webkit-transform-origin:center;-ms-transform-origin:center;transform-origin:center;-webkit-transform:none;-ms-transform:none;transform:none;opacity:1;}}
+.myrotateIn{-webkit-animation-name:myrotateIn;animation-name:myrotateIn}
+
+
+@-webkit-keyframes loading{0%{-webkit-transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg)}}
+@keyframes loading{0%{-webkit-transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg)}}
+.p2 .textBox .text1,.p2 .textBox .text2,.p2 .textBox .text3{ padding-left: 13%; width: 75%;}
+
 .p2 .text1{ padding-top: 20px;}
 .p2 .text1 img{ width: 90%;}
 .p2 .text2 img{ width: 70%;}
 .p2 .text3 img{ width: 100%;}
+
 
 /*第二页反面*/
 .p2_1 .btn{ width: 60%; margin: 60px 20% 0; text-align: center;}
@@ -122,13 +160,58 @@ text-align: center; letter-spacing: -2px;  font-family: Arial;}
 .shareDetail .percent{position: absolute; z-index: 101; top: 54vh; right: 32vw; font-size: 1.8rem; color: #326b4e; width: 46px; 
 text-align: center; letter-spacing: -2px;  font-family: Arial;}
 .shareDetail a{ display: block;}
-
-
-@media screen and (max-width: 320px) {
+/*@media screen and (max-width: 320px) {
     .p1 .circle1 {
-	    bottom: 108px; right: 30%;
-	}
-	.p1 .hand {
-	    right: 20%;
-	}
+      bottom: 108px; right: 29%;
+  }
+  .p1 .hand {
+      right: 20%;
+  }
+}*/
+
+
+
+.p2 .font,
+.p2 .back {
+	position: absolute;
+	transition: transform 0.4s;
+	transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
 }
+
+.p2 .font {
+	-webkit-transform: rotateY( 0deg);
+	-moz-transform: rotateY( 0deg);
+	-o-transform: rotateY( 0deg);
+	transform: rotateY( 0deg);
+}
+
+.p2 .back {
+	-webkit-transform: rotateY( -180deg);
+	-moz-transform: rotateY( -180deg);
+	-o-transform: rotateY( -180deg);
+	transform: rotateY( -180deg);
+}
+
+.p2:hover .font {
+	-webkit-transform: rotateY( 180deg);
+	-moz-transform: rotateY( 180deg);
+	-o-transform: rotateY( 180deg);
+	transform: rotateY( 180deg);
+}
+
+.p2:hover .back {
+	-webkit-transform: rotateY( 0deg);
+	-moz-transform: rotateY( 0deg);
+	-o-transform: rotateY( 0deg);
+	transform: rotateY( 0deg);
+}
+
+
+
+
+

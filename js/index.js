@@ -13,6 +13,7 @@ app.init();
 
 //
 $(".swiper-slide").height($(window).height());
+$(".p2 .textBox").width($(window).width());
 var swiper = new Swiper('.swiper-container', {
     pagination: '',
     direction: 'horizontal',

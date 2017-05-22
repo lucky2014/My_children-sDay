@@ -71,12 +71,12 @@ var app = {
 			insurancePeriod: 365,
 			count: len,
 			sumPrice: $("#sum").html()*100,
-			sumAmount: (len*5)+"万",
+			sumAmount: (len*5)+"0000",
 			insureds: me.insureds,
 			oucCode: me.getQueryString("oucCode"),
 			timeLimited:"N",
 			benifitlaw: "Y",
-			insuredmatch: "Y"
+			insuredmatch: "N"
 		}
 		console.log(JSON.stringify(params,null,2));
 		$.ajax({
