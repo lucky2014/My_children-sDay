@@ -15,17 +15,15 @@
 	<link rel="stylesheet" href="css/css.css">
 	<style>
     html, body {
-        position: relative;
         height: 100%;
     }
     .swiper-container {
         width: 100%;
-        height: 100%;
+        height: 100%; position: relative;
     }
+    .swiper-wrapper{ position: absolute; left: 0; top: 0; width: 1000000px;}
     .swiper-slide {
-        height: auto;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
+        float: left; width: 100%;
     }
     </style>
 </head>
@@ -34,7 +32,7 @@
         <div class="swiper-wrapper">
         	<div class="swiper-slide p1">
         		<img src="imgs/p1_1.png" width="67%" class="p1Text" />
-        		<img src="imgs/p1_4.png" class="circle" />
+        		<div class="circle1"><div class="circle2"><div class="circle3"></div></div></div>
         		<img src="imgs/p1_3.png" class="hand" />
         	</div>
         	<div class="swiper-slide p2">

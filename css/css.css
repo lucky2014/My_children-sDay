@@ -40,7 +40,50 @@ line-height: 20px; color: #fff; font-size: 1.2rem; border-radius: 14px; text-ali
 .p1{ background: url("../imgs/p1_0.png") 0 0; position: relative; background-size:100% 100%;}
 .p1 .p1Bg{ position: absolute; left: 0; top: 0; z-index: 1;}
 .p1 .p1Text{ position: absolute; z-index: 10; left: 5%; top:40px;}
-.p1 .circle{ position: absolute; z-index: 10; right: 24%; bottom:100px; width: 18%;}
+.p1 .circle1{ right: 31%; bottom:133px;}
+.p1 .circle1,.p1 .circle2,.p1 .circle3{ position: absolute; z-index: 10; width: 20px; height: 20px; border-radius: 100%; 
+	background: rgba(100, 100, 100, 0.4);
+	animation-iteration-count:infinite;
+}
+.circle1 {
+  animation: sploosh 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.circle2 {
+  animation: sploosh2 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.circle3 {
+  animation: sploosh3 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+@keyframes sploosh {
+  0% {
+    box-shadow: 0 0 0 0px rgba(100, 100, 100, 0.4);
+    background: rgba(100, 100, 100, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 40px rgba(2100, 100, 100, 0);
+    background: rgba(100, 100, 100, 0);
+  }
+}
+@keyframes sploosh2 {
+  0% {
+    box-shadow: 0 0 0 0px rgba(100, 100, 100, 0.6);
+    background: rgba(100, 100, 100, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 30px rgba(100, 100, 100, 0);
+    background: rgba(100, 100, 100, 0.3);
+  }
+}
+@keyframes sploosh3 {
+  0% {
+    box-shadow: 0 0 0 0px rgba(100, 100, 100, 0.8);
+    background: rgba(100, 100, 100, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba(100, 100, 100, 0);
+    background: rgba(100, 100, 100, 0);
+  }
+}
 .p1 .hand{ position: absolute; z-index: 10; right: 21%; bottom:40px; width: 20%;}
 
  /*第二页*/
@@ -79,3 +122,13 @@ text-align: center; letter-spacing: -2px;  font-family: Arial;}
 .shareDetail .percent{position: absolute; z-index: 101; top: 54vh; right: 32vw; font-size: 1.8rem; color: #326b4e; width: 46px; 
 text-align: center; letter-spacing: -2px;  font-family: Arial;}
 .shareDetail a{ display: block;}
+
+
+@media screen and (max-width: 320px) {
+    .p1 .circle1 {
+	    bottom: 108px; right: 30%;
+	}
+	.p1 .hand {
+	    right: 20%;
+	}
+}

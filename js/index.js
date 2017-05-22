@@ -12,14 +12,16 @@ var app = {
 app.init();
 
 //
+$(".swiper-slide").height($(window).height());
 var swiper = new Swiper('.swiper-container', {
     pagination: '',
-    direction: 'vertical',
+    direction: 'horizontal',
     slidesPerView: 1,
     paginationClickable: false,
     spaceBetween: 0,
     mousewheelControl: true
 });
+
 
 
 //填写数值
