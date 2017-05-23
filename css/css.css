@@ -19,7 +19,7 @@ line-height: 20px; color: #fff; font-size: 1.2rem; border-radius: 14px; text-ali
 .p6Box dd span{ padding-right: 4px;}
 .p6Box dd em{ font-style: normal;}
 
-.msg{ text-align: center; position: fixed; left: 0; top: 40%; z-index: 100; width: 100%; display: none;}
+.msg{ text-align: center; position: absolute; left: 0; top: 40%; z-index: 200; width: 100%; display: none;}
 .msg span{ display: inline-block; padding: 6px 12px; background: rgba(0,0,0,.6); color: #fff; margin: 0 auto;
  border-radius: 6px;}
 
@@ -34,15 +34,17 @@ line-height: 20px; color: #fff; font-size: 1.2rem; border-radius: 14px; text-ali
 .p5 input{ position: absolute; width: 29%; left: 41%; height: 35px; background: none; text-align: center; line-height: 35px;
  color: #4d8468; font-size: 1.2em; border:none; margin-top: 4px;} 
 .p5 .btn{ clear: both; position: relative;}
-.p5 .btn .bb{ position: absolute; left: 28%; top: 1.5vh; width: 44%;}
+.p5 .btn .btb{ position: absolute; left: 28%; top: 1.5vh; width: 44%;}
 
  /*第一页*/
 .p1{ background: url("../imgs/p1_0.png") 0 0; position: relative; background-size:100% 100%;}
 .p1 .p1Bg{ position: absolute; left: 0; top: 0; z-index: 1;}
-.p1 .p1Text{ position: absolute; z-index: 10; left: 5%; top:40px;
-	animation: myZoomIn1 .6s 1;
-    -webkit-animation: myZoomIn1 .6s 1;
+.p1 .p1Text{ position: absolute; z-index: 10; left: 5%; top:40px;}
+.p1 .p1Text.myZoomIn1{
+  animation: myZoomIn1 .6s 1;
+  -webkit-animation: myZoomIn1 .6s 1;
 }
+
 @-webkit-keyframes myZoomIn1 {
   0% {
     opacity: 0.4;
@@ -66,10 +68,6 @@ line-height: 20px; color: #fff; font-size: 1.2rem; border-radius: 14px; text-ali
   }
 }
 
-.myZoomIn1 {
-  -webkit-animation-name: myZoomIn1;
-  animation-name: myZoomIn1;
-}
 .p1 .circle{ position: absolute; z-index: 10; right: 10%; bottom:91px; width: 18%;
 	animation: circleAnimation 2.8s linear infinite;
     -webkit-animation: circleAnimation 2.8s linear infinite;
@@ -113,28 +111,340 @@ line-height: 20px; color: #fff; font-size: 1.2rem; border-radius: 14px; text-ali
 .p2 .banner img,.p2_1 .banner img{ width: 100%;}
 .p2 .banner img.circle{ position: absolute; z-index: 10; right: 8%; bottom:48px; width: 14%;}
 .p2 .banner img.hand{ position: absolute; z-index: 10; right: 0; bottom:-26px; width: 24%;}
-.p2 .textBox{ padding:6px 0 0 0; position: absolute; bottom: 60px;
-	animation: myrotateIn .6s 1;
-    -webkit-animation: myrotateIn .6s 1;
+.p2 .textBox{ padding:6px 0 0 0; position: absolute; bottom: 60px;}
+.p2 .textBox .text1.zoomInDown1,.p2 .textBox .text2.zoomInDown2,.p2 .textBox .text3.zoomInDown3{
+  -webkit-backface-visibility: visible;
+  -ms-backface-visibility: visible;
+  backface-visibility: visible;
+  -webkit-animation: zoomInDown .5s;
+  animation: zoomInDown .5s;
 }
-@-webkit-keyframes myrotateIn{
-	0%{-webkit-transform-origin:center;transform-origin:center;-webkit-transform:rotate3d(0,0,1,-250deg) scale3d(.3,.3,.3);transform:rotate3d(0,0,1,-250deg) scale3d(.3,.3,.3);opacity:0;}
-	100%{-webkit-transform-origin:center;transform-origin:center;-webkit-transform:none;transform:none;opacity:1;}}
-	@keyframes myrotateIn{
-	0%{-webkit-transform-origin:center;-ms-transform-origin:center;transform-origin:center;-webkit-transform:rotate3d(0,0,1,-250deg) scale3d(.3,.3,.3);-ms-transform:rotate3d(0,0,1,-250deg) scale3d(.3,.3,.3);transform:rotate3d(0,0,1,-250deg) scale3d(.3,.3,.3);opacity:0;}
-	100%{-webkit-transform-origin:center;-ms-transform-origin:center;transform-origin:center;-webkit-transform:none;-ms-transform:none;transform:none;opacity:1;}}
-.myrotateIn{-webkit-animation-name:myrotateIn;animation-name:myrotateIn}
+.p2 .textBox .text2.zoomInDown2,.p2 .textBox .text3.zoomInDown3{ 
+}
+.p2 .textBox .text2.zoomInDown2{
+  -webkit-animation: zoomInDown 1s;
+  animation: zoomInDown 1s;
+}
+.p2 .textBox .text3.zoomInDown3{
+  -webkit-animation: zoomInDown 1.5s;
+  animation: zoomInDown 1.5s;
+}
+/*----------------第二页文字效果------------------*/
+@-webkit-keyframes zoomInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(.1,.1,.1) translate3d(0,-1000px,0);
+    transform: scale3d(.1,.1,.1) translate3d(0,-1000px,0);
+    -webkit-animation-timing-function: cubic-bezier(0.55,.055,.675,.19);
+    animation-timing-function: cubic-bezier(0.55,.055,.675,.19)
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(.475,.475,.475) translate3d(0,60px,0);
+    transform: scale3d(.475,.475,.475) translate3d(0,60px,0);
+    -webkit-animation-timing-function: cubic-bezier(0.175,.885,.32,1);
+    animation-timing-function: cubic-bezier(0.175,.885,.32,1)
+  }
+}
+
+@keyframes zoomInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(.1,.1,.1) translate3d(0,-1000px,0);
+    -ms-transform: scale3d(.1,.1,.1) translate3d(0,-1000px,0);
+    transform: scale3d(.1,.1,.1) translate3d(0,-1000px,0);
+    -webkit-animation-timing-function: cubic-bezier(0.55,.055,.675,.19);
+    animation-timing-function: cubic-bezier(0.55,.055,.675,.19)
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(.475,.475,.475) translate3d(0,60px,0);
+    -ms-transform: scale3d(.475,.475,.475) translate3d(0,60px,0);
+    transform: scale3d(.475,.475,.475) translate3d(0,60px,0);
+    -webkit-animation-timing-function: cubic-bezier(0.175,.885,.32,1);
+    animation-timing-function: cubic-bezier(0.175,.885,.32,1)
+  }
+}
+
+/*--------------第三页文字效果-------------*/
+.p2 .textBox.bounceInLeft{
+  -webkit-backface-visibility: visible;
+  -ms-backface-visibility: visible;
+  backface-visibility: visible;
+  -webkit-animation: bounceInLeft .5s;
+  animation: bounceInLeft .5s;
+}
+@-webkit-keyframes bounceInLeft {
+  0%,100%,60%,75%,90% {
+    -webkit-transition-timing-function: cubic-bezier(0.215,.61,.355,1);
+    transition-timing-function: cubic-bezier(0.215,.61,.355,1)
+  }
+
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-3000px,0,0);
+    transform: translate3d(-3000px,0,0)
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(25px,0,0);
+    transform: translate3d(25px,0,0)
+  }
+
+  75% {
+    -webkit-transform: translate3d(-10px,0,0);
+    transform: translate3d(-10px,0,0)
+  }
+
+  90% {
+    -webkit-transform: translate3d(5px,0,0);
+    transform: translate3d(5px,0,0)
+  }
+
+  100% {
+    -webkit-transform: none;
+    transform: none
+  }
+}
+
+@keyframes bounceInLeft {
+  0%,100%,60%,75%,90% {
+    -webkit-transition-timing-function: cubic-bezier(0.215,.61,.355,1);
+    transition-timing-function: cubic-bezier(0.215,.61,.355,1)
+  }
+
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-3000px,0,0);
+    -ms-transform: translate3d(-3000px,0,0);
+    transform: translate3d(-3000px,0,0)
+  }
+
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(25px,0,0);
+    -ms-transform: translate3d(25px,0,0);
+    transform: translate3d(25px,0,0)
+  }
+
+  75% {
+    -webkit-transform: translate3d(-10px,0,0);
+    -ms-transform: translate3d(-10px,0,0);
+    transform: translate3d(-10px,0,0)
+  }
+
+  90% {
+    -webkit-transform: translate3d(5px,0,0);
+    -ms-transform: translate3d(5px,0,0);
+    transform: translate3d(5px,0,0)
+  }
+
+  100% {
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none
+  }
+}
+
+/*--------------第四页文字效果-------------*/
+.p2 .textBox.lightSpeedIn{
+  -webkit-backface-visibility: visible;
+  -ms-backface-visibility: visible;
+  backface-visibility: visible;
+  -webkit-animation: lightSpeedIn .5s;
+  animation: lightSpeedIn .5s;
+}
+@-webkit-keyframes lightSpeedIn {
+  0% {
+    -webkit-transform: translate3d(100%,0,0) skewX(-30deg);
+    transform: translate3d(100%,0,0) skewX(-30deg);
+    opacity: 0
+  }
+
+  60% {
+    -webkit-transform: skewX(20deg);
+    transform: skewX(20deg);
+    opacity: 1
+  }
+
+  80% {
+    -webkit-transform: skewX(-5deg);
+    transform: skewX(-5deg);
+    opacity: 1
+  }
+
+  100% {
+    -webkit-transform: none;
+    transform: none;
+    opacity: 1
+  }
+}
+
+@keyframes lightSpeedIn {
+  0% {
+    -webkit-transform: translate3d(100%,0,0) skewX(-30deg);
+    -ms-transform: translate3d(100%,0,0) skewX(-30deg);
+    transform: translate3d(100%,0,0) skewX(-30deg);
+    opacity: 0
+  }
+
+  60% {
+    -webkit-transform: skewX(20deg);
+    -ms-transform: skewX(20deg);
+    transform: skewX(20deg);
+    opacity: 1
+  }
+
+  80% {
+    -webkit-transform: skewX(-5deg);
+    -ms-transform: skewX(-5deg);
+    transform: skewX(-5deg);
+    opacity: 1
+  }
+
+  100% {
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+    opacity: 1
+  }
+}
+
+/*--------指数结果-------*/
+.showResult.flip{
+  -webkit-animation: flip .2s 4;
+  animation: flip .2s 4;
+}
+@-webkit-keyframes flip {
+  0% {
+    -webkit-transform: perspective(800px) rotate3d(0,1,0,-360deg);
+    transform: perspective(800px) rotate3d(0,1,0,-360deg);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out
+  }
+
+  40% {
+    -webkit-transform: perspective(800px) translate3d(0,0,50px) rotate3d(0,1,0,-190deg);
+    transform: perspective(800px) translate3d(0,0,50px) rotate3d(0,1,0,-190deg);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out
+  }
+
+  50% {
+    -webkit-transform: perspective(800px) translate3d(0,0,50px) rotate3d(0,1,0,-170deg);
+    transform: perspective(800px) translate3d(0,0,50px) rotate3d(0,1,0,-170deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in
+  }
+
+  80% {
+    -webkit-transform: perspective(800px) scale3d(.95,.95,.95);
+    transform: perspective(800px) scale3d(.95,.95,.95);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in
+  }
+
+  100% {
+    -webkit-transform: perspective(800px);
+    transform: perspective(800px);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in
+  }
+}
+
+@keyframes flip {
+  0% {
+    -webkit-transform: perspective(200px) rotate3d(0,1,0,-360deg);
+    -ms-transform: perspective(200px) rotate3d(0,1,0,-360deg);
+    transform: perspective(200px) rotate3d(0,1,0,-360deg);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out
+  }
+
+  40% {
+    -webkit-transform: perspective(200px) translate3d(0,0,150px) rotate3d(0,1,0,-190deg);
+    -ms-transform: perspective(200px) translate3d(0,0,150px) rotate3d(0,1,0,-190deg);
+    transform: perspective(200px) translate3d(0,0,150px) rotate3d(0,1,0,-190deg);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out
+  }
+
+  50% {
+    -webkit-transform: perspective(200px) translate3d(0,0,150px) rotate3d(0,1,0,-170deg);
+    -ms-transform: perspective(200px) translate3d(0,0,150px) rotate3d(0,1,0,-170deg);
+    transform: perspective(200px) translate3d(0,0,150px) rotate3d(0,1,0,-170deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in
+  }
+
+  80% {
+    -webkit-transform: perspective(200px) scale3d(.95,.95,.95);
+    -ms-transform: perspective(200px) scale3d(.95,.95,.95);
+    transform: perspective(200px) scale3d(.95,.95,.95);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in
+  }
+
+  100% {
+    -webkit-transform: perspective(400px);
+    -ms-transform: perspective(400px);
+    transform: perspective(400px);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in
+  }
+}
 
 
-@-webkit-keyframes loading{0%{-webkit-transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg)}}
-@keyframes loading{0%{-webkit-transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg)}}
-.p2 .textBox .text1,.p2 .textBox .text2,.p2 .textBox .text3{ padding-left: 13%; width: 75%;}
+.p2 .textBox .text1,.p2 .textBox .text2,.p2 .textBox .text3{ padding-left: 13%; width: 75%; padding-bottom: 4px;}
 
 .p2 .text1{ padding-top: 20px;}
 .p2 .text1 img{ width: 90%;}
 .p2 .text2 img{ width: 70%;}
 .p2 .text3 img{ width: 100%;}
 
+.p2_front,
+.p2_back {
+  height: 100%;
+  position: absolute;
+  transition: transform 0.4s;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+}
+
+.p2_front {
+  -webkit-transform: rotateY( 0deg);
+  -moz-transform: rotateY( 0deg);
+  -o-transform: rotateY( 0deg);
+  transform: rotateY( 0deg);
+}
+
+.p2_back {
+  -webkit-transform: rotateY( -180deg);
+  -moz-transform: rotateY( -180deg);
+  -o-transform: rotateY( -180deg);
+  transform: rotateY( -180deg);
+}
+
+.p2_front.font {
+  -webkit-transform: rotateY( 180deg);
+  -moz-transform: rotateY( 180deg);
+  -o-transform: rotateY( 180deg);
+  transform: rotateY( 180deg);
+}
+
+.p2_back.back {
+  -webkit-transform: rotateY( 0deg);
+  -moz-transform: rotateY( 0deg);
+  -o-transform: rotateY( 0deg);
+  transform: rotateY( 0deg);
+}
 
 /*第二页反面*/
 .p2_1 .btn{ width: 60%; margin: 60px 20% 0; text-align: center;}
@@ -144,11 +454,13 @@ line-height: 20px; color: #fff; font-size: 1.2rem; border-radius: 14px; text-ali
 .p3{ background: url("../imgs/p3_1.png") 0 0; background-size:100% 100%;}
 .p4{ background: url("../imgs/p4_1.png") 0 0; background-size:100% 100%;}
 
-.showResult{ position: fixed; z-index: 100; background: rgba(0,0,0,.5); width: 80%; left: 0; bottom: 0; top: 0; padding: 24% 10% 0;
-display: none;}
-.showResult .percent{position: absolute; z-index: 101; top: 51.5vh; right: 32vw; font-size: 1.8rem; color: #326b4e; width: 46px; 
+.resMask{ position: absolute; z-index:99; background: rgba(0,0,0,.5); width: 80%; left: 0; bottom: 0; top: 0; 
+padding: 24% 10% 0; display: none;}
+.showResult{ position: absolute; z-index: 100; width: 80%; left: 10%; bottom: 18%; 
+top: 18%; display: none;}
+.showResult .percent{position: absolute; z-index: 101; top: 38vh; right: 22vw; font-size: 1.8rem; color: #326b4e; width: 46px; 
 text-align: center; letter-spacing: -2px;  font-family: Arial;}
-.showResult .bb{ position: absolute; left: 26%; width: 48%; bottom: 22vh;}
+.showResult .bb{ position: absolute; left: 18%; width: 64%; bottom: -2vh;}
 .showResult .bb #shareBtn{ display: block; margin: 10px 0;}
 
 .shareMark{ background: rgba(0,0,0,.5); position: fixed; left: 0; top: 0; width: 100%; bottom:0; z-index: 101; display: none;}
@@ -160,58 +472,12 @@ text-align: center; letter-spacing: -2px;  font-family: Arial;}
 .shareDetail .percent{position: absolute; z-index: 101; top: 54vh; right: 32vw; font-size: 1.8rem; color: #326b4e; width: 46px; 
 text-align: center; letter-spacing: -2px;  font-family: Arial;}
 .shareDetail a{ display: block;}
-/*@media screen and (max-width: 320px) {
-    .p1 .circle1 {
-      bottom: 108px; right: 29%;
+@media screen and (max-width: 320px) {
+  .p1 .circle1 {
+    bottom: 108px; right: 29%;
   }
   .p1 .hand {
-      right: 20%;
+    right: 20%;
   }
-}*/
-
-
-
-.p2 .font,
-.p2 .back {
-	position: absolute;
-	transition: transform 0.4s;
-	transform-style: preserve-3d;
-	-webkit-transform-style: preserve-3d;
-	backface-visibility: hidden;
-	-webkit-backface-visibility: hidden;
-	-moz-backface-visibility: hidden;
-	-ms-backface-visibility: hidden;
 }
-
-.p2 .font {
-	-webkit-transform: rotateY( 0deg);
-	-moz-transform: rotateY( 0deg);
-	-o-transform: rotateY( 0deg);
-	transform: rotateY( 0deg);
-}
-
-.p2 .back {
-	-webkit-transform: rotateY( -180deg);
-	-moz-transform: rotateY( -180deg);
-	-o-transform: rotateY( -180deg);
-	transform: rotateY( -180deg);
-}
-
-.p2:hover .font {
-	-webkit-transform: rotateY( 180deg);
-	-moz-transform: rotateY( 180deg);
-	-o-transform: rotateY( 180deg);
-	transform: rotateY( 180deg);
-}
-
-.p2:hover .back {
-	-webkit-transform: rotateY( 0deg);
-	-moz-transform: rotateY( 0deg);
-	-o-transform: rotateY( 0deg);
-	transform: rotateY( 0deg);
-}
-
-
-
-
 

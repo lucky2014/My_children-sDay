@@ -72,33 +72,51 @@ var random = {
 		var num = $("input[name=num]").val();
 
 		if(!num){
-			alert("请输入具体的数值！");
+			$(".msg span").html("请输入正确的数值！");
+			$(".msg").show();
 			$(".showResult").hide();
-		}else if(num == 0){
-			$(".showResult .bg").attr("src", "imgs/p5_3.png");
-			$(".percent").hide();
-			$(".showResult").show();
-		}else{
-			var index = random.compareInit(num.replace(/\,/g, ""));
-			var percent = random.percentage[index];
-
-			if(percent>0 && percent <=10){
-				$(".showResult .bg").attr("src", "imgs/p5_4.png");
-				$(".showResult .bb img").eq(0).attr("src", "imgs/p5_7.png");
-				$(".showResult .bb img").eq(1).attr("src", "imgs/p5_8.png");
-			}else if(percent>10 && percent <=50){
-				$(".showResult .bg").attr("src", "imgs/p5_5.png");
-				$(".showResult .bb img").eq(0).attr("src", "imgs/p5_7.png");
-				$(".showResult .bb img").eq(1).attr("src", "imgs/p5_8.png");
+			$(".resMask").hide();
+		}else if(/\d/g.test(num)){
+			if(num == 0){
+				$(".showResult .bg").attr("src", "imgs/p5_3.png");
+				$(".percent").hide();
+				$(".showResult").show().addClass("flip");
+				$(".resMask").show();
 			}else{
-				$(".showResult .bg").attr("src", "imgs/p5_6.png");
-				$(".showResult .bb img").eq(0).attr("src", "imgs/p5_11.png").attr("id","buyBtn");
-				$(".showResult .bb img").eq(1).attr("src", "imgs/p5_12.png").attr("id","shareBtn");
-			}
+				var index = random.compareInit(num.replace(/\,/g, ""));
+				var percent = random.percentage[index];
 
-			$(".percent").html(percent).show();
-			$(".showResult").show();
+				if(percent>0 && percent <=10){
+					$(".showResult .bg").attr("src", "imgs/p5_4.png");
+					$(".showResult .bb img").eq(0).attr("src", "imgs/p5_7.png");
+					$(".showResult .bb img").eq(1).attr("src", "imgs/p5_8.png");
+				}else if(percent>10 && percent <=50){
+					$(".showResult .bg").attr("src", "imgs/p5_5.png");
+					$(".showResult .bb img").eq(0).attr("src", "imgs/p5_7.png");
+					$(".showResult .bb img").eq(1).attr("src", "imgs/p5_8.png");
+				}else{
+					$(".showResult .bg").attr("src", "imgs/p5_6.png");
+					$(".showResult .bb img").eq(0).attr("src", "imgs/p5_11.png").attr("id","buyBtn");
+					$(".showResult .bb img").eq(1).attr("src", "imgs/p5_12.png").attr("id","shareBtn");
+				}
+
+				$(".percent").html(percent).show();
+				$(".showResult").show().addClass("flip");
+				$(".resMask").show();
+			}
+		}else{
+			$(".msg span").html("请输入正确的数值！");
+			$(".msg").show();
+			$(".showResult").hide();
+			$(".resMask").hide();
 		}
+
+		setTimeout(function(){
+			$(".msg").hide();
+		},2000);
+
+
+		
 	},
 	shareInit: function(){
 		var me = this;
@@ -220,7 +238,7 @@ var random = {
 };
 
 //点击看熊孩子指数
-$(".p5 .btn .bb").click(function(){
+$(".p5 .btn .btb").click(function(){
 	random.init(); 
 });
 
