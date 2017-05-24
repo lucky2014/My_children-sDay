@@ -66,14 +66,14 @@ var app = {
 		}
 		
 		var params = {
-			planCode:"ZKF",
+			planCode:"ZKF3301001",
 			startDate: me.getDate3(),
 			insurancePeriod: 365,
 			count: len,
 			sumPrice: $("#sum").html()*100,
 			sumAmount: (len*5)+"0000",
 			insureds: me.insureds,
-			oucCode: me.getQueryString("oucCode"),
+			oucCode: "PDXcpsj8SMObvRXBlVnnWA",
 			timeLimited:"N",
 			benifitlaw: "Y",
 			insuredmatch: "N"
@@ -87,10 +87,55 @@ var app = {
 			success: function(msg){
 				if(msg.code==100){ 
 					$(".p6Box dd a").css("pointer-events", "auto"); //添加成功后才能再次点击，防止重复提交
-					var object = strToJson(msg.result);
-					location.href = "../wxPay/wxPay.html?trade_no="+object;
+					var object = JSON.parse(msg.result);
+					me.weChatPretrade(msg.result);
 				}else{
-					alert(msg.result)
+					console.log(msg.result)
+				}
+			}
+		});
+	},
+	weChatPretrade: function(trade_no){
+		var wxRechargeData = {
+			trade_no: String(trade_no)
+		};
+		$.ajax({
+			type: 'post',
+			url: ajaxUrl,
+			data: {cmd:"weChatPretrade",value:JSON.stringify(wxRechargeData)},
+			dataType: 'json',
+			success: function(msg){
+				if(msg.code==100){
+					var object = JSON.parse(msg.result);
+					var source = "JSAPI";
+			    	if (typeof WeixinJSBridge == "undefined") {
+						if (document.addEventListener) {
+							document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+						} else if (document.attachEvent) {
+							document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+							document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+						}
+			    	} else {
+			    	    onBridgeReady();
+			    	}
+					function onBridgeReady(){
+				 		WeixinJSBridge.invoke('getBrandWCPayRequest', {
+							"appId" : object.appId, //公众号名称，由商户传入     
+							"timeStamp" : object.timeStamp, //时间戳，自1970年以来的秒数     
+							"nonceStr" : object.nonceStr, //随机串     
+							"package" : decodeURIComponent(object.package),
+							"signType" : "MD5", //微信签名方式：     
+							"paySign" : object.paySign //微信签名 
+						}, function(res) {
+							//alert(JSON.stringify(res));
+							if (res.err_msg == "get_brand_wcpay_request:ok") {
+								$(".payOk").show();
+								$("body").css({overflow: "hidden", height: "100%"})
+							} // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
+						})
+					}
+				}else{
+					console.log(msg.result)
 				}
 			}
 		});
@@ -156,5 +201,11 @@ $(".p6Box dd a").click(function(){
 	
 	var len = self.attr("len");
 	app.submitInit(len);
+});
+
+//点击支付成功的弹框
+$(".payOk").click(function(){
+	$(this).hide();
+	$("body").attr("style","");
 });
 

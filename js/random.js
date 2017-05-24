@@ -153,10 +153,10 @@ var random = {
 		});
 	},
 	wxShare: function(){
-		var title = "六一节活动";
+		var title = "致每一个曾是孩子的你";
 		var link = "../shareDetail.html";
-		var imgUrl = "../imgs/p1_0.png";
-		var desc = "六一节活动";
+		var imgUrl = "../imgs/imgUrl.png";
+		var desc = "这是一件你曾经难以理解，如今感同身受的事！";
 
 		//获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
 		wx.onMenuShareTimeline({
@@ -176,7 +176,7 @@ var random = {
 		//获取“分享给朋友”按钮点击状态及自定义分享内容接口
 		wx.onMenuShareAppMessage({
 		    title: title, // 分享标题
-		    desc: '', // 分享描述
+		    desc: desc, // 分享描述
 		    link: link, // 分享链接
 		    imgUrl: imgUrl, // 分享图标
 		    type: '', // 分享类型,music、video或link，不填默认为link
@@ -193,7 +193,7 @@ var random = {
 		//获取“分享到QQ”按钮点击状态及自定义分享内容接口
 		wx.onMenuShareQQ({
 			title: title, // 分享标题
-		    desc: '', // 分享描述
+		    desc: desc, // 分享描述
 		    link: link, // 分享链接
 		    imgUrl: imgUrl, // 分享图标
 		    success: function () { 
@@ -208,7 +208,7 @@ var random = {
 		//获取“分享到腾讯微博”按钮点击状态及自定义分享内容接口
 		wx.onMenuShareWeibo({
 			title: title, // 分享标题
-		    desc: '', // 分享描述
+		    desc: desc, // 分享描述
 		    link: link, // 分享链接
 		    imgUrl: imgUrl, // 分享图标
 		    success: function () { 
@@ -223,7 +223,7 @@ var random = {
 		//获取“分享到QQ空间”按钮点击状态及自定义分享内容接口
 		wx.onMenuShareQZone({
 			title: title, // 分享标题
-		    desc: '', // 分享描述
+		    desc: desc, // 分享描述
 		    link: link, // 分享链接
 		    imgUrl: imgUrl, // 分享图标
 		    success: function () { 
