@@ -22,7 +22,7 @@ var app = {
 		return null;
 	},
 	validatorInit: function(name, msgStr, reg){
-		$("input[name="+name+"]").bind("input propertychange",function(){
+		$("input[name="+name+"]").bind("blur",function(){
 			var val = $(this).val();
 			if(!val){
 				$(".msg span").html(msgStr);
@@ -56,7 +56,7 @@ var app = {
 		var childName = $(".childName");
 		for(var j=0; j<childName.length;j++){
 			var vv = $(".childName").eq(j).find("input").val();
-			if(vv.length>2){
+			if(vv.length>1){
 				me.insureds.push({
 					insuredName: vv,
 					insuredFlag: "010",
@@ -78,7 +78,7 @@ var app = {
 			benifitlaw: "Y",
 			insuredmatch: "N"
 		}
-		console.log(JSON.stringify(params,null,2));
+		//console.log(JSON.stringify(params,null,2));
 		$.ajax({
 			type: 'post',
 			url: me.ajaxUrl,
@@ -89,26 +89,35 @@ var app = {
 					$(".p6Box dd a").css("pointer-events", "auto"); //添加成功后才能再次点击，防止重复提交
 					var object = JSON.parse(msg.result);
 					me.weChatPretrade(msg.result);
+					
 				}else{
-					console.log(msg.result)
+					//console.log(msg.result)
 				}
 			}
 		});
 	},
 	weChatPretrade: function(trade_no){
+		var me = this;
 		var wxRechargeData = {
 			trade_no: String(trade_no)
 		};
 		$.ajax({
 			type: 'post',
-			url: ajaxUrl,
+			url: me.ajaxUrl,
 			data: {cmd:"weChatPretrade",value:JSON.stringify(wxRechargeData)},
 			dataType: 'json',
 			success: function(msg){
 				if(msg.code==100){
+					//console.log(JSON.stringify(msg,null,2));
 					var object = JSON.parse(msg.result);
-					var source = "JSAPI";
-			    	if (typeof WeixinJSBridge == "undefined") {
+					object.CodeImgUrl = unescape(object.CodeImgUrl.replace(/\\u/g, "%u")); 
+					console.log(object.CodeImgUrl)
+					$(".qrcode img").attr("src",object.CodeImgUrl)
+					$(".codeBk").show();
+					$("body,html").addClass("hideBody");
+					
+					
+			    	/*if (typeof WeixinJSBridge == "undefined") {
 						if (document.addEventListener) {
 							document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
 						} else if (document.attachEvent) {
@@ -117,8 +126,8 @@ var app = {
 						}
 			    	} else {
 			    	    onBridgeReady();
-			    	}
-					function onBridgeReady(){
+			    	}*/
+					/*function onBridgeReady(){
 				 		WeixinJSBridge.invoke('getBrandWCPayRequest', {
 							"appId" : object.appId, //公众号名称，由商户传入     
 							"timeStamp" : object.timeStamp, //时间戳，自1970年以来的秒数     
@@ -133,9 +142,9 @@ var app = {
 								$("body").css({overflow: "hidden", height: "100%"})
 							} // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
 						})
-					}
+					}*/
 				}else{
-					console.log(msg.result)
+					//console.log(msg.result)
 				}
 			}
 		});
@@ -159,6 +168,7 @@ var app = {
 			count = 0;
 		}else{
 			$(".childName").eq(count).hide();
+			$("#sum").html(6.1*count+"0");
 			--count;
 			app.count = count;
 			if(count == 0){
@@ -166,7 +176,7 @@ var app = {
 				$("#reduce").hide();
 			}
 		} 
-	}
+	},
 };
 
 //业务逻辑
@@ -196,16 +206,48 @@ $(".childName input").bind("input propertychange",function(){
 });
 
 $(".p6Box dd a").click(function(){
-	var self = $(this);
-	self.css("pointer-events", "none"); //不能点击，防止重复提交
+	var insuredName = $("input[name=parentName]").val();
+	var identifyNumber = $("input[name=idCard]").val();
+	var mobile = $("input[name=phone]").val();
+	var insuredAddress= $("textarea[name=address]").val();
+	var childrenName1 = $("input[name=childrenName1]").val();
+	if(insuredName && identifyNumber && mobile && insuredAddress && childrenName1){
+		var self = $(this);
+		self.css("pointer-events", "none"); //不能点击，防止重复提交
+		
+		var len = self.attr("len") || 1;
+		app.submitInit(len);
+	}else{
+		
+	}
 	
-	var len = self.attr("len");
-	app.submitInit(len);
 });
 
 //点击支付成功的弹框
-$(".payOk").click(function(){
-	$(this).hide();
-	$("body").attr("style","");
+/*$(".delShow").click(function(){
+	$(".payOk").hide();
+	$("body,html").attr("style","");
+});*/
+
+
+//app.qcodetochar("weixin:/pay/bizpayurl?pr=zvIhvep")
+$("body").click(function(){
+	$(".codeBk").hide();
+	$("body,html").removeClass("hideBody");
+})
+$(".codeOuter").click(function(event){
+    event.stopPropagation();
 });
 
+
+/*function is_weixn(){  
+    	var ua = navigator.userAgent.toLowerCase();  
+        if(ua.match(/MicroMessenger/i)=="micromessenger") {  
+             
+        } else {   
+             window.location.href="404.html";
+        }  
+} 
+$(document).ready(function(){
+  is_weixn()
+})*/

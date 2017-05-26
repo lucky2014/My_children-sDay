@@ -21,9 +21,10 @@ var shareDetail = {
 			}
 
 			$(".percent").html(percent).show();
+			$(".showResult").show();
 		}
 	},
-	getQueryString: function(num) { //获取URL的参数，isEit
+	getQueryString: function(name) { //获取URL的参数，isEit
 		var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
 		var r = window.location.search.substr(1).match(reg);
 		if (r != null) {
@@ -103,3 +104,14 @@ var shareDetail = {
 
 shareDetail.init();
 
+function is_weixn(){  
+    	var ua = navigator.userAgent.toLowerCase();  
+        if(ua.match(/MicroMessenger/i)=="micromessenger") {  
+             
+        } else {   
+             window.location.href="404.html";
+        }  
+} 
+$(document).ready(function(){
+  //is_weixn()
+})

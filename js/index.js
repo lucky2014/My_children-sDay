@@ -12,7 +12,13 @@ var app = {
 app.init();
 
 //
-$(".swiper-slide").height($(window).height()).width($(window).width()).css("overflow","hidden");
+var h = $(window).height();
+var w = $(window).width();
+$("body,html").height(h);
+$(".swiper-slide").height(h).width(w).css("overflow","hidden");
+setTimeout(function(){
+	$(".p1 .circle1,.p1 .circle2,.p1 .circle3,.p1 .hand").show();
+},6000);
 var swiper = new Swiper('.swiper-container', {
     pagination: '',
     direction: 'horizontal',
@@ -24,87 +30,108 @@ var swiper = new Swiper('.swiper-container', {
 		var nowInd = swiper.activeIndex;
 		//alert(nowInd);
 		if(nowInd == 0){
-			$(".p2 .textBox,.p4 .textBox,.p3 .textBox").hide();
-			$(".p1Text").addClass("myZoomIn1");
+			$(".p2 .textBox,.p4 .textBox,.p3 .textBox,.p2 .circle1,.p2 .circle2, .p2 .circle3,.p2 .hand").hide();
+			setTimeout(function(){
+				$(".p1 .circle1,.p1 .circle2,.p1 .circle3,.p1 .hand").show();
+			},6000);
 
-			$(".p2 .text1").removeClass("zoomInDown1");
-			$(".p2 .text2").removeClass("zoomInDown2");
-			$(".p2 .text3").removeClass("zoomInDown3");
+			$(".p1 .text1").addClass("fadeIn1");
+			$(".p1 .text2").addClass("fadeIn2");
+			$(".p1 .text3").addClass("fadeIn3");
 
-			$(".p3 .text1").removeClass("bounceInLeft1");
-			$(".p3 .text2").removeClass("bounceInLeft2");
-			$(".p3 .text3").removeClass("bounceInLeft3");
-
-			$(".p3 .textBox").removeClass("bounceInLeft");
-			$(".p4 .textBox").removeClass("lightSpeedIn");
+			$(".p2 .text1").removeClass("fadeIn1");
+			$(".p2 .text2").removeClass("fadeIn2");
+			$(".p2 .text3").removeClass("fadeIn3");
 		}else if(nowInd == 1){
 			//所有文字隐藏
-			$(".p2 .textBox,.p4 .textBox,.p3 .textBox").hide();
-			$(".p1Text").removeClass("myZoomIn1");
+			$(".p1_textBox,.p2 .textBox,.p4 .textBox,.p3 .textBox,.p3 .circle1, .p3 .circle2, .p3 .circle3,.p3 .hand").hide();
+			//所有背面隐藏，正面显示
+			$(".p2_back").removeClass("back");
+			$(".p2_front").removeClass("font");
+
 			setTimeout(function(){
 				$(".p2 .textBox").show();
-			});
+			},100);
+			setTimeout(function(){
+				$(".p2 .circle1, .p2 .circle2, .p2 .circle3,.p2 .hand").show();
+			},6000);
 
-			$(".p2 .text1").addClass("zoomInDown1");
-			$(".p2 .text2").addClass("zoomInDown2");
-			$(".p2 .text3").addClass("zoomInDown3");
-			
-			$(".p3 .text1").removeClass("bounceInLeft1");
-			$(".p3 .text2").removeClass("bounceInLeft2");
-			$(".p3 .text3").removeClass("bounceInLeft3");
+			$(".p1 .text1,.p3 .text1").removeClass("fadeIn1");
+			$(".p1 .text2,.p3 .text2").removeClass("fadeIn2");
+			$(".p1 .text3,.p3 .text3").removeClass("fadeIn3");
 
-			$(".p4 .textBox").removeClass("lightSpeedIn");
+			$(".p2 .text1").addClass("fadeIn1");
+			$(".p2 .text2").addClass("fadeIn2");
+			$(".p2 .text3").addClass("fadeIn3");
 		}else if(nowInd == 2){
 			//所有文字隐藏
-			$(".p2 .textBox,.p4 .textBox,.p3 .textBox").hide();
+			$(".p1_textBox,.p2 .textBox,.p3 .textBox,.p4 .textBox,.p4 .circle1, .p4 .circle2, .p4 .circle3,.p4 .hand").hide();
 			//所有背面隐藏，正面显示
-			$(".p1Text").removeClass("myZoomIn1");
+			$(".p2_back").removeClass("back");
+			$(".p2_front").removeClass("font");
 
-			$(".p2 .text1").removeClass("zoomInDown1");
-			$(".p2 .text2").removeClass("zoomInDown2");
-			$(".p2 .text3").removeClass("zoomInDown3");
+			$(".p2 .text1").removeClass("fadeIn1");
+			$(".p2 .text2").removeClass("fadeIn2");
+			$(".p2 .text3").removeClass("fadeIn3");
 
 			setTimeout(function(){
 				$(".p3 .textBox").show();
-			});
-			$(".p3 .text1").addClass("bounceInLeft1");
-			$(".p3 .text2").addClass("bounceInLeft2");
-			$(".p3 .text3").addClass("bounceInLeft3");
+			},100);
+			setTimeout(function(){
+				$(".p3 .circle1, .p3 .circle2, .pp3 .circle3,.p3 .hand").show();
+			},6000);
+			$(".p3 .text1").addClass("fadeIn1");
+			$(".p3 .text2").addClass("fadeIn2");
+			$(".p3 .text3").addClass("fadeIn3");
 
-			$(".p4 .textBox").removeClass("lightSpeedIn");
+			$(".p2 .text1,.p4 .text1").removeClass("fadeIn1");
+			$(".p2 .text2,.p4 .text2").removeClass("fadeIn2");
+			$(".p2 .text3,.p4 .text3").removeClass("fadeIn3");
 		}else if(nowInd == 3){
 			//所有文字隐藏
-			$(".p2 .textBox,.p4 .textBox,.p3 .textBox").hide();
-			$(".p1Text").removeClass("myZoomIn1");
-
-			$(".p2 .text1").removeClass("zoomInDown1");
-			$(".p2 .text2").removeClass("zoomInDown2");
-			$(".p2 .text3").removeClass("zoomInDown3");
-
-			$(".p3 .text1").removeClass("bounceInLeft1");
-			$(".p3 .text2").removeClass("bounceInLeft2");
-			$(".p3 .text3").removeClass("bounceInLeft3");
+			$(".p2 .textBox,.p4 .textBox,.p3 .textBox,.p5 .p5_textBox, .p5 .num,.p5 .circle1, .p5 .circle2, .p5 .circle3,.p5 .hand").hide();
+			//所有背面隐藏，正面显示
+			$(".p2_back").removeClass("back");
+			$(".p2_front").removeClass("font");
 
 			//第三页文字显示
 			setTimeout(function(){
 				$(".p4 .textBox").show();
-			});
-			$(".p3 .textBox").removeClass("bounceInLeft");
-			$(".p4 .textBox").addClass("lightSpeedIn");
-		}else{
+			},100);
+			setTimeout(function(){
+				$(".p4 .circle1,.p4 .circle2,.p4 .circle3,.p4 .hand").show();
+			},6000);
+			$(".p4 .text1").addClass("fadeIn1");
+			$(".p4 .text2").addClass("fadeIn2");
+			$(".p4 .text3").addClass("fadeIn3");
+
+			$(".p3 .text1,.p5 .text1").removeClass("fadeIn1");
+			$(".p3 .text2,.p5 .text2").removeClass("fadeIn2");
+			$(".p3 .text3,.p5 .text3").removeClass("fadeIn3");
+			$(".p5 .text4").removeClass("fadeIn4");
+			$(".p5 .text5").removeClass("fadeIn5");
+			$(".p5 .num").removeClass("fadeIn6");
+		}else if(nowInd == 4){
 			//所有文字隐藏
-			$(".p2 .textBox,.p4 .textBox,.p3 .textBox").hide();
-			$(".p1Text").removeClass("myZoomIn1");
+			$(".p2 .textBox,.p4 .textBox,.p3 .textBox, .p5 .p5_textBox, .p5 .num").hide();
 
-			$(".p2 .text1").removeClass("zoomInDown1");
-			$(".p2 .text2").removeClass("zoomInDown2");
-			$(".p2 .text3").removeClass("zoomInDown3");
+			$(".p4 .text1").removeClass("fadeIn1");
+			$(".p4 .text2").removeClass("fadeIn2");
+			$(".p4 .text3").removeClass("fadeIn3");
 
-			$(".p3 .text1").removeClass("bounceInLeft1");
-			$(".p3 .text2").removeClass("bounceInLeft2");
-			$(".p3 .text3").removeClass("bounceInLeft3");
-			
-			$(".p4 .textBox").removeClass("lightSpeedIn");
+			//第五页文字显示
+			setTimeout(function(){
+				$(".p5 .p5_textBox").show();
+			});
+			setTimeout(function(){
+				$(".p5 .num").show();
+			},10000);
+			$(".p5 img.text1").addClass("fadeIn1");
+			$(".p5 img.text2").addClass("fadeIn2");
+			$(".p5 img.text3").addClass("fadeIn3");
+			$(".p5 img.text4").addClass("fadeIn4");
+			$(".p5 img.text5").addClass("fadeIn5");
+			$(".p5 num.text6").addClass("fadeIn6");
 		}
     },
     nextButton:'.swiper-button-next', //下一页
@@ -122,3 +149,43 @@ $(".p5 input[name=num]").bind("input propertychange",function(){
 	val = app.commafy(val);
 	$(this).val(val);
 }); 
+
+
+
+var audioName = document.getElementById("audio1");
+audioName.play();//解决iphone上不能自动播放问题
+$(".musicPlay img").click(function(){ //暂停/播放背景音乐
+	if(!audioName.paused){
+		audioName.pause();
+		$(this).removeClass("change");
+	}else{
+		audioName.play();
+		$(this).addClass("change");
+	}
+})
+
+if((h<530) && (w <364)){
+	$(".p1 .p1_textBox").css({"margin-top": "36px"});
+    $(".cm_main .banner").css({"width": "80%"});
+    $(".p5 .p5_textBox").css({"margin-top": "20px"});
+    $(".p1 .hand").css({"right": "20%", "top":"78vh"});
+    $(".circle1, .circle2, .circle3").css({"right": "10vw", "top": "55.6vh"});
+    $(".p1 .circle1, .p1 .circle2, .p1  .circle3").css({"right": "29vw", "top": "76vh"});
+    
+    $(".cm_main .banner img.hand").css({"bottom":"-10px","right": "8px"});
+    $(".resMask").css({"padding": "10% 10% 0"});
+    $(".showResult .percent").css({"top": "47vh", "right": "22vw"});
+    $(".showResult").css({"top":"5%"})
+}
+
+/*function is_weixn(){  
+    	var ua = navigator.userAgent.toLowerCase();  
+        if(ua.match(/MicroMessenger/i)=="micromessenger") {  
+             
+        } else {   
+             window.location.href="404.html";
+        }  
+} 
+$(document).ready(function(){
+  is_weixn()
+})*/
