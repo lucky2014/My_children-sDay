@@ -20,15 +20,15 @@
 		<div class="p6Box">
 			<dl>
 				<dt>
-					<label>监护人姓名</label>
-					<input type="text" name="parentName" />
-					<span class="pMsg">(监护人为本保险的被保险人、投保人、受益人)</span>
+					<label style="float:left;">监护人姓名</label>
+					<input type="text" name="parentName" style="float:left;"/>
+					<span class="pMsg" style="float:left;">(监护人为本保险的被保险人、投保人、受益人)</span>
 				</dt>
 				<dt><label>手机号码</label><input type="text" name="phone" /></dt>
 				<dt><label>身份证号码</label><input type="text" name="idCard" /></dt>
-				<dt><label>地址信息</label><textarea name="address" placeholder="为保证保单有效性，请填写详细地址"></textarea></dt>
-				<dt class="childName"><label>孩子姓名</label><input type="text" name="childrenName1" placeholder="多个孩子请点击右侧按钮" /><img src="imgs/p6Add.png" id="add" /><img src="imgs/p6Reduce.png" id="reduce" /></dt>
-				<dt class="hide childName"><label></label><input type="text" name="childrenName2" placeholder="请输入第二个孩子的姓名！" /></dt>
+				<dt><label>地址信息</label><textarea name="address" placeholder="为保证保单有效性，请填写详细地址,，格式为X市X区X"></textarea></dt>
+				<dt class="childName"><label>孩子姓名</label><input type="text" name="childrenName1" placeholder="多个孩子请点击右侧按钮" /><img src="imgs/p6Add.png" id="add" /><img src="imgs/p6Reduce.png" class="reduce reduce1" /></dt>
+				<dt class="hide childName"><label></label><input type="text" name="childrenName2" placeholder="请输入第二个孩子的姓名！" /><img src="imgs/p6Reduce.png" class="reduce reduce2" /></dt>
 				<dt class="hide childName"><label></label><input type="text" name="childrenName3" placeholder="请输入第三个孩子的姓名！" /></dt>
 				<dd><label>原价<strike>￥<em id="originPrice">41</em></strike></label><a>￥<span id="sum">6.10</span>投保</a></dd>
 			</dl>
@@ -45,6 +45,7 @@
     </div> -->
 
 	<div class="codeBk">
+		<img src="imgs/loding.gif" id="loding">
 	    <div class="codeOuter">
 	    	<div class="qrcode"><img src="" /></div>
 	    	<p>请长按上方二维码支付！</p>
@@ -52,6 +53,7 @@
 	    </div>
 	</div>
 	<script src="js/jquery-1.8.3.min.js"></script>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 	<script src="js/swiper.min.js"></script>
 	<script src="js/jquery.qrcode.min.js"></script>
 	<script src="js/buy.js"></script>

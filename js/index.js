@@ -152,9 +152,21 @@ $(".p5 input[name=num]").bind("input propertychange",function(){
 
 
 
-var audioName = document.getElementById("audio1");
-audioName.play();//解决iphone上不能自动播放问题
+
+/*$("#audio1")[0].addEventListener("loadedmetadata",function(){
+    this.play();
+});*/
+/*$(function(){
+
+	$("#audio1")[0].play();
+
+})*/
+document.addEventListener("WeixinJSBridgeReady", function () {
+    $("#audio1")[0].play();
+}, false);
+/*audioName.play();//解决iphone上不能自动播放问题*/
 $(".musicPlay img").click(function(){ //暂停/播放背景音乐
+	var audioName = document.getElementById("audio1");
 	if(!audioName.paused){
 		audioName.pause();
 		$(this).removeClass("change");
@@ -164,7 +176,36 @@ $(".musicPlay img").click(function(){ //暂停/播放背景音乐
 	}
 })
 
-if((h<530) && (w <364)){
+//alert(w+ "----" + h);  //360/570,432/660,360/526
+if(w/h>0.64 && w/h<0.65){
+	$(".p1 .p1_textBox").css({"margin-top": "36px"});
+    $(".cm_main .banner").css({"width": "80%"});
+    $(".p5 .p5_textBox").css({"margin-top": "20px"});
+    $(".p1 .hand").css({"right": "20%", "top":"78vh"});
+    $(".circle1, .circle2, .circle3").css({"right": "10vw", "top": "55.6vh"});
+    $(".p1 .circle1, .p1 .circle2, .p1  .circle3").css({"right": "29vw", "top": "76vh"});
+    
+    $(".cm_main .banner img.hand").css({"bottom":"-10px","right": "8px"});
+    $(".resMask").css({"padding": "10% 10% 0"});
+    $(".showResult .percent").css({"top": "47vh", "right": "22vw"});
+    $(".showResult").css({"top":"5%"})
+}
+if(w/h>=0.65 && w/h<=0.66){
+	$(".p1 .p1_textBox").css({"margin-top": "36px"});
+    $(".cm_main .banner").css({"width": "80%"});
+    $(".p5 .p5_textBox").css({"margin-top": "20px"});
+    $(".p1 .hand").css({"right": "20%", "top":"78vh"});
+    $(".circle1, .circle2, .circle3").css({"right": "10vw", "top": "55.6vh"});
+    $(".p1 .circle1, .p1 .circle2, .p1  .circle3").css({"right": "29vw", "top": "76vh"});
+    
+    $(".cm_main .banner img.hand").css({"bottom":"-10px","right": "8px"});
+    $(".resMask").css({"padding": "10% 10% 0"});
+    $(".showResult .percent").css({"top": "47vh", "right": "22vw"});
+    $(".showResult").css({"top":"5%"})
+    $(".p5 .num img.btb").css({"top":"14.6em"});
+    $(".p5 .num input").css({"margin-top":"25px"});
+}
+if(w/h>0.66){
 	$(".p1 .p1_textBox").css({"margin-top": "36px"});
     $(".cm_main .banner").css({"width": "80%"});
     $(".p5 .p5_textBox").css({"margin-top": "20px"});
@@ -178,7 +219,7 @@ if((h<530) && (w <364)){
     $(".showResult").css({"top":"5%"})
 }
 
-/*function is_weixn(){  
+function is_weixn(){  
     	var ua = navigator.userAgent.toLowerCase();  
         if(ua.match(/MicroMessenger/i)=="micromessenger") {  
              
@@ -188,4 +229,4 @@ if((h<530) && (w <364)){
 } 
 $(document).ready(function(){
   is_weixn()
-})*/
+})

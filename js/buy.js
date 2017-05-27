@@ -1,5 +1,5 @@
 var app = {
-	ajaxUrl: "/PICCWxServerAdvance/http/Server.do",
+	ajaxUrl: "/PICCWxServer/http/Server.do",
 	insureds: [],
 	count: 0,
 	url: "",
@@ -67,7 +67,7 @@ var app = {
 		
 		var params = {
 			planCode:"ZKF3301001",
-			startDate: me.getDate3(),
+			startDate: "2017-06-09",
 			insurancePeriod: 365,
 			count: len,
 			sumPrice: $("#sum").html()*100,
@@ -109,11 +109,12 @@ var app = {
 			success: function(msg){
 				if(msg.code==100){
 					//console.log(JSON.stringify(msg,null,2));
+					$("#loding").hide();
+					$(".codeOuter").show();
 					var object = JSON.parse(msg.result);
 					object.CodeImgUrl = unescape(object.CodeImgUrl.replace(/\\u/g, "%u")); 
-					console.log(object.CodeImgUrl)
+					//console.log(object.CodeImgUrl)
 					$(".qrcode img").attr("src",object.CodeImgUrl)
-					$(".codeBk").show();
 					$("body,html").addClass("hideBody");
 					
 					
@@ -156,8 +157,12 @@ var app = {
 			++count;
 			app.count = count;
 			if(count == 2){
-				$("#reduce").css("display","inline-block");
+				$(".reduce1").css("display","inline-block");
+				$(".reduce2").hide();
 				$("#add").hide();
+			}else if(count == 1){
+				$(".reduce1").hide();
+				$(".reduce2").css("display","inline-block");
 			}
 		} 
 		$(".childName").eq(count).show();
@@ -168,12 +173,17 @@ var app = {
 			count = 0;
 		}else{
 			$(".childName").eq(count).hide();
+			$(".childName").eq(count).find("input").attr("value","");
 			$("#sum").html(6.1*count+"0");
 			--count;
 			app.count = count;
 			if(count == 0){
 				$("#add").css("display","inline-block");
-				$("#reduce").hide();
+				$(".reduce").hide();
+			}else if(count == 1){
+				$(".reduce1").hide();
+				$(".reduce2").css("display","inline-block");
+				$("#add").css("display","inline-block");
 			}
 		} 
 	},
@@ -187,7 +197,7 @@ $("#add").click(function(){
 	app.add(app.count);
 });
 //减少孩子姓名
-$("#reduce").click(function(){
+$(".reduce").click(function(){
 	app.reduce(app.count);
 });
 
@@ -196,7 +206,7 @@ $(".childName input").bind("input propertychange",function(){
 	var childName = $(".childName");
 	for(var j=0; j<childName.length;j++){
 		var vv = $(".childName").eq(j).find("input").val();
-		if(vv.length>2){
+		if(vv.length>1){
 			len = len+1;
 			$("#sum").html((len*6.1).toFixed(2));
 			$("#originPrice").html((len*41));
@@ -216,6 +226,8 @@ $(".p6Box dd a").click(function(){
 		self.css("pointer-events", "none"); //不能点击，防止重复提交
 		
 		var len = self.attr("len") || 1;
+		$(".codeBk").show();
+		$("body,html").addClass("hideBody");
 		app.submitInit(len);
 	}else{
 		
@@ -231,7 +243,7 @@ $(".p6Box dd a").click(function(){
 
 
 //app.qcodetochar("weixin:/pay/bizpayurl?pr=zvIhvep")
-$("body").click(function(){
+$(".codeBk").click(function(){
 	$(".codeBk").hide();
 	$("body,html").removeClass("hideBody");
 })
@@ -240,7 +252,7 @@ $(".codeOuter").click(function(event){
 });
 
 
-/*function is_weixn(){  
+function is_weixn(){  
     	var ua = navigator.userAgent.toLowerCase();  
         if(ua.match(/MicroMessenger/i)=="micromessenger") {  
              
@@ -250,4 +262,120 @@ $(".codeOuter").click(function(event){
 } 
 $(document).ready(function(){
   is_weixn()
-})*/
+})
+
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?318e2c0d5818cbc069c1ef3d4efbd1e9";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+
+
+$.ajax({
+	type: 'post',
+	url: "/PICCWxServer/html/jsConfig.do",
+	data: {url:window.location.href},
+	dataType: 'json',
+	success: function(msg){
+		if(msg.code==100){
+			var obj = JSON.parse(msg.result);
+			//alert(JSON.stringify(obj,null,2));
+
+			//二维码扫描
+			wx.config({
+				debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+				appId: obj.appId, // 必填，公众号的唯一标识
+				timestamp: obj.timestamp, // 必填，生成签名的时间戳
+				nonceStr: obj.nonceStr, // 必填，生成签名的随机串
+				signature: obj.signature,// 必填，签名，见附录1
+				jsApiList: [ 'onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+			});
+			
+			wx.ready(function(){
+				var url = location.href.split("childrenDay");
+				var title = "致每一个曾是孩子的你";
+				var link = url[0]+"childrenDay/buy.html";
+				var imgUrl = url[0]+"childrenDay/imgs/imgUrl.jpg";
+				var desc = "这是一件你曾经难以理解，如今感同身受的事";
+				//获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+				wx.onMenuShareTimeline({
+				    title: title, // 分享标题
+				    link: link, // 分享链接
+				    imgUrl: imgUrl, // 分享图标
+					success: function (res) {
+						//Dialog('已分享');
+					},
+					cancel: function (res) {
+						//Dialog('已取消');
+					}
+				});
+				//获取“分享给朋友”按钮点击状态及自定义分享内容接口
+				wx.onMenuShareAppMessage({
+				    title: title, // 分享标题
+				    desc: desc, // 分享描述
+				    link: link, // 分享链接
+				    imgUrl: imgUrl, // 分享图标
+				    type: '', // 分享类型,music、video或link，不填默认为link
+				    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+				    success: function () { 
+				        // 用户确认分享后执行的回调函数
+				    	//Dialog("分享成功！");
+				    	//console.log(JSON.stringify(res));
+				    },
+				    cancel: function () { 
+				        // 用户取消分享后执行的回调函数
+				        //console.log(JSON.stringify(res));
+				    }
+				});
+				
+				//获取“分享到QQ”按钮点击状态及自定义分享内容接口
+				wx.onMenuShareQQ({
+					title: title, // 分享标题
+				    desc: desc, // 分享描述
+				    link: link, // 分享链接
+				    imgUrl: imgUrl, // 分享图标
+				    success: function () { 
+				       // 用户确认分享后执行的回调函数
+				    	//Dialog("分享成功！");
+				    },
+				    cancel: function () { 
+				       // 用户取消分享后执行的回调函数
+				    }
+				});
+				
+				//获取“分享到腾讯微博”按钮点击状态及自定义分享内容接口
+				wx.onMenuShareWeibo({
+					title: title, // 分享标题
+				    desc: desc, // 分享描述
+				    link: link, // 分享链接
+				    imgUrl: imgUrl, // 分享图标
+				    success: function () { 
+				       // 用户确认分享后执行的回调函数
+				    	//Dialog("分享成功！");
+				    },
+				    cancel: function () { 
+				        // 用户取消分享后执行的回调函数
+				    }
+				});
+				
+				//获取“分享到QQ空间”按钮点击状态及自定义分享内容接口
+				wx.onMenuShareQZone({
+					title: title, // 分享标题
+				    desc: desc, // 分享描述
+				    link: link, // 分享链接
+				    imgUrl: imgUrl, // 分享图标
+				    success: function () { 
+				       // 用户确认分享后执行的回调函数
+				    	//Dialog("分享成功！");
+				    },
+				    cancel: function () { 
+				        // 用户取消分享后执行的回调函数
+				    }
+				});
+			});
+		}else{
+		}
+	}
+});
