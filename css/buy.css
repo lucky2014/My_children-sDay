@@ -6,7 +6,7 @@ img{ display: block; vertical-align: bottom;}
 
 .p6Box{ background: url("../imgs/p6Bg2.png") 0 0 repeat-y; background-size: 100% 100%; display: block; min-height: 470px;}
 .p6Box dl{}
-.p6Box dt,.p6Box dd{ clear: both; overflow: hidden; padding: 8px 0;}
+.p6Box dt,.p6Box dd{ clear: both; overflow: hidden; padding: 5px 0;}
 .p6Box dt label,.p6Box dd label{ display: inline-block; width: 26%; text-align: left; padding-left: 8%; color: #955a36;
 vertical-align: top; line-height: 32px;}
 .p6Box dt input,.p6Box dt textarea{ width: 50%; display: inline-block; border: 1px solid #955a36; background: none; padding: 6px; 
@@ -24,10 +24,17 @@ line-height: 20px; color: #fff; font-size: 1.2rem; border-radius: 14px; text-ali
  border-radius: 6px;}
 
 .p6Box dt img.reduce{ display: none;}
-.tip{  clear: both; padding:20px 40px; color: #c7a78f; font-size: .9rem; text-align: center;}
+.tip{  clear: both; padding:20px; color: #c7a78f; font-size: .9rem; text-align: center;}
+.tip p{color: #f47e00;font-size: 1.1em;font-weight: bold;line-height: 1.5;}
 .tip span{ font-size: 1.2rem;}
 
-.pMsg{ display: block; padding-left: 35%; font-size: .7rem; color: #c2875e; width: 56%;}
+.pMsg{ display: block; padding-left: 34%; font-size: 12px; color: #c2875e; width: 60%;margin-top: 2px;}
+@media screen and (max-width: 360px) and (min-width: 340px){
+    .pMsg{padding-left: 33%;}
+}
+@media screen and (max-width: 339px){
+    .pMsg{padding-left: 31%;width: 64%;}
+}
 /*支付成功弹框*/
 .payOk{position: fixed; left: 0; width: 100%; z-index: 111; top: 0; height: 100%; background: rgba(0,0,0,.4);display: none; }
 .payOk .showOk{ width: 80%; margin: 40vh auto 0;}
