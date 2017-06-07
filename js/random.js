@@ -1,5 +1,5 @@
 var random = {
-	shareUrl: "/PICCWxServer/html/jsConfig.do",
+	shareUrl: "/PICCWxServerAdvance/html/jsConfig.do",
 	percentage: [2,5,6,8,10,12,15,18,21,26,30,33,40,45,50,51,52,53,55,58,60,63,67,70,75,77,80,83,87,90,92,98],
 	compareInit: function(num){
 		if(num >= 1 && num <= 10){
@@ -124,7 +124,7 @@ var random = {
 		var me = this;
 		$.ajax({
 			type: 'post',
-			url: "/PICCWxServer/html/jsConfig.do",
+			url: "/PICCWxServerAdvance/html/jsConfig.do",
 			data: {url:window.location.href},
 			dataType: 'json',
 			success: function(msg){
@@ -273,7 +273,7 @@ var _hmt = _hmt || [];
 
 $.ajax({
 	type: 'post',
-	url: "/PICCWxServer/html/jsConfig.do",
+	url: "/PICCWxServerAdvance/html/jsConfig.do",
 	data: {url:window.location.href},
 	dataType: 'json',
 	success: function(msg){

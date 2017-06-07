@@ -135,7 +135,7 @@ if(w/h>0.66){
 
 $.ajax({
 	type: 'post',
-	url: "/PICCWxServer/html/jsConfig.do",
+	url: "/PICCWxServerAdvance/html/jsConfig.do",
 	data: {url:window.location.href},
 	dataType: 'json',
 	success: function(msg){

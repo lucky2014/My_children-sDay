@@ -1,5 +1,5 @@
 var app = {
-	ajaxUrl: "/PICCWxServer/http/Server.do",
+	ajaxUrl: "/PICCWxServerAdvance/http/Server.do",
 	insureds: [],
 	count: 0,
 	url: "",
@@ -21,7 +21,7 @@ var app = {
 		}
 		return null;
 	},
-	validatorInit: function(name, msgStr, reg){
+	validatorInit: function(name, msgStr, reg, len){
 		$("input[name="+name+"]").bind("blur",function(){
 			var val = $(this).val();
 			if(!val){
@@ -46,6 +46,7 @@ var app = {
 	},
 	submitInit: function(len){
 		var me = this;
+		me.insureds = [];
 		var insuredName = $("input[name=parentName]").val();
 		var identifyNumber = $("input[name=idCard]").val();
 		var mobile = $("input[name=phone]").val();
@@ -196,8 +197,18 @@ $(".p6Box dd a").click(function(){
 	var mobile = $("input[name=phone]").val();
 	var insuredAddress= $("textarea[name=address]").val();
 	var childrenName1 = $("input[name=childrenName1]").val();
-	if(insuredName && identifyNumber && mobile && insuredAddress && childrenName1){
+
+	if(mobile && mobile.length!=11){
+		$(".msg span").html("请填写正确的手机号码！");
+		$(".msg").show();
+		return false;
+	}else if(identifyNumber && (identifyNumber.length!=15 || identifyNumber.length != 18)){
+		$(".msg span").html("请填写正确的身份证号码！");
+		$(".msg").show();
+		return false;
+	}else if(insuredName && insuredAddress && childrenName1){
 		var self = $(this);
+		$(".msg").hide();
 		self.css("pointer-events", "none"); //不能点击，防止重复提交
 		
 		var len = self.attr("len") || 1;
@@ -205,9 +216,10 @@ $(".p6Box dd a").click(function(){
 		$("body,html").addClass("hideBody");
 		app.submitInit(len);
 	}else{
-		
+		$(".msg span").html("每一项都必填哦！");
+		$(".msg").show();
+		return false;
 	}
-	
 });
 
 //app.qcodetochar("weixin:/pay/bizpayurl?pr=zvIhvep")
@@ -243,7 +255,7 @@ var _hmt = _hmt || [];
 
 $.ajax({
 	type: 'post',
-	url: "/PICCWxServer/html/jsConfig.do",
+	url: "/PICCWxServerAdvance/html/jsConfig.do",
 	data: {url:window.location.href},
 	dataType: 'json',
 	success: function(msg){
