@@ -1,0 +1,104 @@
+﻿*{ margin:0; padding:0; list-style: none; font-size: 1em;}
+body,html{ width: 100%; height: 100%; background: red; color: #fff;}
+.swiper-container{ position: relative; height: 100%; overflow: hidden; width: 100%;}
+.swiper-wrapper{ height: 100000px; position: absolute; left: 0; top: 0;}
+.swiper-slide{ width: 100%; height: 100%;}
+.swiper-pagination-bullet {
+width: 6px;
+height: 6px;
+background: #fff;
+opacity: .4;
+}
+.swiper-pagination-bullet-active {
+opacity: 1;
+}
+
+/*分享页*/
+.p5{ background: url("../imgs/p5_bg.jpg") 0 0; background-size: 100% 100%;}
+.p5 .rt{ display: block; float: left; width: 100%; position: relative;}
+.p5 .num input{ position: absolute; width: 29%; left: 41%; height: 35px; background: none; text-align: center; line-height: 35px;
+ color: #4d8468; font-size: 1.2em; border:none; margin-top: 4px; top: 7.7em;} 
+.p5 .num{ margin: 40px 8% 0; position: relative;}
+.p5 .num img{ width: 100%;}
+.p5 .num img.btb{ position: absolute; left: 28%; top: 14.1em; width: 44%;}
+.p5 .btn{ clear: both; position: relative;}
+
+.p5 .p5_textBox{ margin-left: 10%; width: 81%; margin-top: 40px;}
+.p5 .p5_textBox img{ width: 100%;}
+.shareMark{ background: rgba(0,0,0,.5); position: absolute; left: 0; top: 0; width: 100%; bottom:0; z-index: 101; display: none;}
+.p5 .shareMark img{ width: 60%; float: right; margin-right: 10px;}
+
+ /*第一页*/
+.p1{ background: url("../imgs/p1_0.jpg") 0 0; position: relative; background-size:100% 100%;}
+.p1 .p1Bg{ position: absolute; left: 0; top: 0; z-index: 1;}
+.p1 .p1_textBox{ margin-left: 5%; width: 70%; margin-top: 50px;}
+.p1 .p1_textBox img{ width: 100%;}
+/*第一页手势效果*/
+.p1 .hand{ position: absolute; z-index: 10; right: 20%; top:78vh; width: 20%;}
+.circle1, .circle2, .circle3{ position: absolute; z-index: 10; width: 20px; height: 20px; border-radius: 100%; 
+  background: rgba(249, 118, 77, 0.8); right: 9.8vw; top: 59.6vh;
+}
+.p1 .circle1, .p1 .circle2, .p1 .circle3{
+  top: 78vh;
+  right: 30%;
+}
+
+
+/*第二页*/
+.p2,.p2_1{ background: url("../imgs/p2_0.jpg") 0 0; background-size:100% 100%;}
+.cm_main .banner{ width: 90%; margin: 0 auto; padding-top: 20px; position: relative;}
+.cm_main .banner img{ width: 100%;}
+.cm_main .textBox{ padding:6px 0 0 0; position: absolute; bottom: 36px;}
+.cm_main .textBox .text1,.cm_main .textBox .text2,.cm_main .textBox .text3{ padding-left: 13%; width: 75%; padding-bottom: 4px;}
+.cm_main .text1{ padding-top: 20px;}
+.cm_main .text1 img{ width: 90%;}
+.cm_main .text2 img{ width: 70%;}
+.cm_main .text3 img{ width: 100%;}
+
+.cm_main img.hand,.p1 img.hand{ position: absolute; z-index: 10; right: 13%; bottom:-20px; width: 20%;
+  -webkit-transform: scale3d(.5,.5,.5)
+  transform: scale3d(.5,.5,.5)
+  animation: handMove 1.8s linear infinite;
+  -webkit-animation: handMove 1.8s linear infinite;
+}
+
+.p2_front,
+.p2_back {
+  height: 100%;
+  position: absolute;
+  transition: transform 0.4s;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+}
+
+.p2_front {
+  -webkit-transform: rotateY( 0deg);
+  -moz-transform: rotateY( 0deg);
+  -o-transform: rotateY( 0deg);
+  transform: rotateY( 0deg);
+}
+
+.p2_back {
+  -webkit-transform: rotateY( -180deg);
+  -moz-transform: rotateY( -180deg);
+  -o-transform: rotateY( -180deg);
+  transform: rotateY( -180deg);
+}
+
+.p2_front.font {
+  -webkit-transform: rotateY( 180deg);
+  -moz-transform: rotateY( 180deg);
+  -o-transform: rotateY( 180deg);
+  transform: rotateY( 180deg);
+}
+
+.p2_back.back {
+  -webkit-transform: rotateY( 0deg);
+  -moz-transform: rotateY( 0deg);
+  -o-transform: rotateY( 0deg);
+  transform: rotateY( 0deg);
+}

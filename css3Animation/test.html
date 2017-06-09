@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>404</title>
+<style>
+body{background-color: #fff}
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 240px;
+  width: 160px;
+  margin: -120px 0 0 -80px;
+}
+.loading:after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: -5%;
+  width: 110%;
+  height: 10px;
+  border-radius: 100%;
+  background: #ececec;
+  z-index: -1;
+  animation: shadow 1.8s linear infinite;
+}
+.squareXS {
+  position: absolute;
+  bottom: 30px;
+  left: 68px;
+  width: 24px;
+  height: 24px;
+  border-radius: 2px;
+  transform: scale(1.5, 0.5) rotate(0);
+  background: #42a7fc;
+  animation: squareXS 1.8s linear infinite;
+}
+.squareXL {
+  position: absolute;
+  bottom: -20px;
+  left: 44px;
+  width: 72px;
+  height: 72px;
+  border-radius: 2px;
+  transform: scale(2, 0.5) rotate(0);
+  background: #fc3e42;
+  animation: squareXL 1.8s linear infinite;
+}
+@-moz-keyframes squareXS {
+  0% {
+    transform: scale(1.5, 0.5) rotate(0);
+  }
+  10% {
+    transform: scale(1, 1) rotate(0);
+  }
+  42% {
+    transform: scale(1, 1) rotate(-180deg);
+    bottom: 250px;
+  }
+  74% {
+    transform: scale(1, 1) rotate(-360deg);
+  }
+  75% {
+    transform: scale(1, 1) rotate(-360deg);
+    bottom: 74px;
+  }
+  95% {
+    transform: scale(1.5, 0.5) rotate(-360deg);
+    bottom: 23px;
+  }
+  100% {
+    transform: scale(1.5, 0.5) rotate(-360deg);
+    bottom: 14px;
+  }
+}
+@-webkit-keyframes squareXS {
+  0% {
+    transform: scale(1.5, 0.5) rotate(0);
+  }
+  10% {
+    transform: scale(1, 1) rotate(0);
+  }
+  42% {
+    transform: scale(1, 1) rotate(-180deg);
+    bottom: 250px;
+  }
+  74% {
+    transform: scale(1, 1) rotate(-360deg);
+  }
+  75% {
+    transform: scale(1, 1) rotate(-360deg);
+    bottom: 74px;
+  }
+  95% {
+    transform: scale(1.5, 0.5) rotate(-360deg);
+    bottom: 23px;
+  }
+  100% {
+    transform: scale(1.5, 0.5) rotate(-360deg);
+    bottom: 14px;
+  }
+}
+@-o-keyframes squareXS {
+  0% {
+    transform: scale(1.5, 0.5) rotate(0);
+  }
+  10% {
+    transform: scale(1, 1) rotate(0);
+  }
+  42% {
+    transform: scale(1, 1) rotate(-180deg);
+    bottom: 250px;
+  }
+  74% {
+    transform: scale(1, 1) rotate(-360deg);
+  }
+  75% {
+    transform: scale(1, 1) rotate(-360deg);
+    bottom: 74px;
+  }
+  95% {
+    transform: scale(1.5, 0.5) rotate(-360deg);
+    bottom: 23px;
+  }
+  100% {
+    transform: scale(1.5, 0.5) rotate(-360deg);
+    bottom: 14px;
+  }
+}
+@keyframes squareXS {
+  0% {
+    transform: scale(1.5, 0.5) rotate(0);
+  }
+  10% {
+    transform: scale(1, 1) rotate(0);
+  }
+  42% {
+    transform: scale(1, 1) rotate(-180deg);
+    bottom: 250px;
+  }
+  74% {
+    transform: scale(1, 1) rotate(-360deg);
+  }
+  75% {
+    transform: scale(1, 1) rotate(-360deg);
+    bottom: 74px;
+  }
+  95% {
+    transform: scale(1.5, 0.5) rotate(-360deg);
+    bottom: 23px;
+    background: red;
+  }
+  100% {
+    transform: scale(1.5, 0.5) rotate(-360deg);
+    bottom: 14px;
+  }
+}
+/*@-moz-keyframes squareXL {
+  0% {
+    transform: scale(2, 0.5) rotate(0);
+  }
+  10% {
+    transform: scale(1, 1) rotate(0);
+  }
+  42% {
+    transform: scale(1, 1) rotate(90deg);
+    bottom: 120px;
+  }
+  74% {
+    transform: scale(1, 1) rotate(180deg);
+  }
+  75% {
+    transform: scale(1, 1) rotate(180deg);
+    bottom: 0;
+  }
+  95% {
+    transform: scale(2, 0.5) rotate(180deg);
+    bottom: -20px;
+  }
+  100% {
+    transform: scale(2, 0.5) rotate(180deg);
+  }
+}
+@-webkit-keyframes squareXL {
+  0% {
+    transform: scale(2, 0.5) rotate(0);
+  }
+  10% {
+    transform: scale(1, 1) rotate(0);
+  }
+  42% {
+    transform: scale(1, 1) rotate(90deg);
+    bottom: 120px;
+  }
+  74% {
+    transform: scale(1, 1) rotate(180deg);
+  }
+  75% {
+    transform: scale(1, 1) rotate(180deg);
+    bottom: 0;
+  }
+  95% {
+    transform: scale(2, 0.5) rotate(180deg);
+    bottom: -20px;
+  }
+  100% {
+    transform: scale(2, 0.5) rotate(180deg);
+  }
+}
+@-o-keyframes squareXL {
+  0% {
+    transform: scale(2, 0.5) rotate(0);
+  }
+  10% {
+    transform: scale(1, 1) rotate(0);
+  }
+  42% {
+    transform: scale(1, 1) rotate(90deg);
+    bottom: 120px;
+  }
+  74% {
+    transform: scale(1, 1) rotate(180deg);
+  }
+  75% {
+    transform: scale(1, 1) rotate(180deg);
+    bottom: 0;
+  }
+  95% {
+    transform: scale(2, 0.5) rotate(180deg);
+    bottom: -20px;
+  }
+  100% {
+    transform: scale(2, 0.5) rotate(180deg);
+  }
+}
+@keyframes squareXL {
+  0% {
+    transform: scale(2, 0.5) rotate(0);
+  }
+  10% {
+    transform: scale(1, 1) rotate(0);
+  }
+  42% {
+    transform: scale(1, 1) rotate(90deg);
+    bottom: 120px;
+  }
+  74% {
+    transform: scale(1, 1) rotate(180deg);
+  }
+  75% {
+    transform: scale(1, 1) rotate(180deg);
+    bottom: 0;
+  }
+  95% {
+    transform: scale(2, 0.5) rotate(180deg);
+    bottom: -20px;
+  }
+  100% {
+    transform: scale(2, 0.5) rotate(180deg);
+  }
+}*/
+@-moz-keyframes shadow {
+  40% {
+    transform: scale(0.5, 0.8);
+  }
+}
+@-webkit-keyframes shadow {
+  40% {
+    transform: scale(0.5, 0.8);
+  }
+}
+@-o-keyframes shadow {
+  40% {
+    transform: scale(0.5, 0.8);
+  }
+}
+@keyframes shadow {
+  40% {
+    transform: scale(0.5, 0.8);
+  }
+}
+
+</style>
+</head>
+<body>
+<div class="loading">
+
+<div class="squareXS"></div>
+<div class="squareXL"></div>
+
+</div>
+
+</body>
+</html>
